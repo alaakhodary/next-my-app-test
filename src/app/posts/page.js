@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Suspense } from "react";
+import SuspenseLoading from "../components/SuspenseLoading";
 
 export default async function PostsPage() {
   const response = await fetch("https://jsonplaceholder.typicode.com/posts", {
@@ -28,18 +28,12 @@ export default async function PostsPage() {
     );
   });
 
-  const loadingJSX = (
-    <div>
-      <h3>loading...</h3>
-    </div>
-  );
-
   return (
     <>
       <h2 style={{ marginBottom: "10px" }}>PostsPage</h2>
-      <Suspense fallback={loadingJSX}>
+      <SuspenseLoading>
         <div>{postsJSX}</div>
-      </Suspense>
+      </SuspenseLoading>
     </>
   );
 }

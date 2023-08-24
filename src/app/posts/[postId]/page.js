@@ -1,21 +1,16 @@
+import SuspenseLoading from "@/app/components/SuspenseLoading";
 import PostDetails from "@/app/components/postDetails";
-import React, { Suspense } from "react";
+import React from "react";
 
 const ShowPostDetails = async ({ params }) => {
   const postId = params.postId;
 
-  const loadingJSX = (
-    <div>
-      <h3>loading...</h3>
-    </div>
-  );
-
   return (
     <>
       <h1 style={{ color: "white" }}>Post Details</h1>
-      <Suspense fallback={loadingJSX}>
+      <SuspenseLoading>
         <PostDetails postId={postId} />
-      </Suspense>
+      </SuspenseLoading>
     </>
   );
 };
